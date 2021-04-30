@@ -58,3 +58,58 @@
   });
 
 })();
+
+(() => {
+  // 分享朋友圈
+  function shareFriendCircle(data) {
+      window.WeixinJSBridge.on('menu:share:timeline', function () {
+          window.WeixinJSBridge.invoke('shareTimeline', {
+              'appid': '',
+              'img_url': `assets/share.jpg`,
+              'img_width': '108',
+              'img_height': '108',
+              'link': location.href,
+              'desc': data.desc,
+              'title': data.title
+          }, function (res) {
+              lib.report('h5_refund_share_circles')
+          })
+      })
+  }
+
+  // 分享好友
+  function shareFriend(data) {
+      window.WeixinJSBridge.on('menu:share:appmessage', function () {
+          window.WeixinJSBridge.invoke('sendAppMessage', {
+              'appid': '',
+              'img_url': `assets/share.jpg`, // 分享图标
+              'img_width': '108',
+              'img_height': '108',
+              'link': location.href,
+              'desc': data.desc,
+              'title': data.title
+          }, function (res) {
+              lib.report('h5_refund_share_friend')
+          })
+      })
+  }
+
+  // jsonp 回调函数
+  function renderTplData(data) {
+      // 初始化微信js桥
+      if (typeof WeixinJSBridge === 'undefined') {
+          document.addEventListener('WeixinJSBridgeReady', function() {
+              shareFriendCircle(data)
+              shareFriend(data)
+          }, false)
+      } else {
+          shareFriendCircle(data)
+          shareFriend(data)
+      }
+  }
+
+  renderTplData({
+    title: '消息汇',
+    desc: '免广告定制版信息获取平台'
+  });
+})();
