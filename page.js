@@ -36,6 +36,8 @@
   }
   
   function bindEvt() {
+    const myAudio = document.querySelector('#myAudio');
+    myAudio.playbackRate = 1.5;
     document.querySelector('.tab-container').addEventListener('click', function(e) {
       e.stopPropagation();
       const tDom = e.target;
@@ -58,7 +60,6 @@
         '倍速 x3',
       ];
       const len = 5;
-      const myAudio = document.querySelector('#myAudio');
       const btnText = e.currentTarget.innerText.trim();
       const idx = speedArr.findIndex(item => item === btnText);
       const rIdx = (idx + 1) % 5;
@@ -67,7 +68,6 @@
       e.currentTarget.innerText = speedArr[rIdx];
     });
     document.querySelector('#control .reset').addEventListener('click', function(e) {
-      const myAudio = document.querySelector('#myAudio');
       myAudio.playbackRate = 1;
       document.querySelector('#control .speed').innerText = '倍速 x1';
     });
