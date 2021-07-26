@@ -6,11 +6,11 @@
     },
     {
       name: '新浪财经',
-      url: 'https://ruanyf.github.io/sina-news'
+      url: 'https://reamd.github.io/sina-news'
     },
     {
       name: 'lvv2',
-      url: 'https://ruanyf.github.io/lvv2-feed'
+      url: 'https://reamd.github.io/lvv2-feed'
     },
   ];
 
