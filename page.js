@@ -49,6 +49,28 @@
         iframe.setAttribute('src', oSrc);
       }
     });
+    document.querySelector('#control .speed').addEventListener('click', function(e) {
+      const speedArr = [
+        '倍速 x1',
+        '倍速 x1.5',
+        '倍速 x2',
+        '倍速 x2.5',
+        '倍速 x3',
+      ];
+      const len = 5;
+      const myAudio = document.querySelector('#myAudio');
+      const btnText = e.currentTarget.innerText.trim();
+      const idx = speedArr.findIndex(item => item === btnText);
+      const rIdx = (idx + 1) % 5;
+      const speedNum = rIdx * 0.5 + 1;
+      myAudio.playbackRate = speedNum;
+      e.currentTarget.innerText = speedArr[rIdx];
+    });
+    document.querySelector('#control .reset').addEventListener('click', function(e) {
+      const myAudio = document.querySelector('#myAudio');
+      myAudio.playbackRate = 1;
+      document.querySelector('#control .speed').innerText = '倍速 x1';
+    });
   }
 
   renderTpl(items);

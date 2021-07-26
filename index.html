@@ -7,6 +7,31 @@
     <meta name="description" content="免广告定制版信息获取平台">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <style>
+      .audio {
+        width: 100%;
+        height: auto;
+        /* display: flex; */
+        padding: 20px;
+        overflow: hidden;
+      }
+      #myAudio {
+        width: 100%;
+      }
+      #control {
+        display: flex;
+        justify-content: space-between;
+      }
+      #control  .speed, #control .reset {
+        display: inline-block;
+        padding: 15px 20px;       
+        border-radius: 10px; 
+      }
+      #control  .speed {
+        background-color: rgb(124, 240, 240);
+      }
+      #control .reset {
+        background-color: rgb(230, 230, 230);
+      }
       p {
         max-width: 50rem;
       }
@@ -28,6 +53,16 @@
   <body>
     <div style="display: none;">
       <img src="./assets/share.jpg"/>
+    </div>
+    <div class="audio">
+      <audio id="myAudio" controls>
+        <source src="https://reamd.github.io/rss-news/audio/latest.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <div id="control">
+        <span class="speed">倍速 x1</span>
+        <span class="reset">重置为 x1</span>
+      </div>
     </div>
     <div class="container">
       <div class="tabs">
